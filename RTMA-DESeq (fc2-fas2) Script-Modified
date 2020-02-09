@@ -123,12 +123,20 @@ dev.off()
 
 sessionInfo()
 
-#Enhanced Volcano Plot (Significant differentially expressed genes labeled)
+#Enhanced Volcano Plot (Significant differentially expressed genes labeled) (devtools::install_github('kevinblighe/EnhancedVolcano')
+
+
+if (!requireNamespace('BiocManager', quietly = TRUE))
+install.packages('BiocManager')
+BiocManager::install('EnhancedVolcano')
+
+devtools::install_github('kevinblighe/EnhancedVolcano')
+
+library(EnhancedVolcano)
 
 EnhancedVolcano(res,
-                 lab = rownames(res),
-                 x = 'log2FoldChange',
-                 y = 'pvalue',
-                 xlim = c(-11, 11))
-png("diffexpr-EnhancedVolcano.png", 1200, 1000, pointsize=20)
-EnhancedVolcano(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(11, 11))
+                lab = rownames(res),
+                x = 'log2FoldChange',
+                y = 'pvalue',
+                xlim = c(-11, 11))
+                
