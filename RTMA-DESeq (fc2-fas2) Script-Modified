@@ -3,7 +3,7 @@
 
 # RNA-seq data from PRJNA315516
 # https://www.ncbi.nlm.nih.gov//bioproject/PRJNA315516.
-# 3 control samples ("fc2"), 3 samples are double mutants ("fas2")
+# 3 samples are a single mutant ("fc2"), 3 samples are a double mutant ("fas2;fc2")
 
 # 1.0 Import & pre-process ----------------------------------------------------
 
@@ -18,8 +18,8 @@ colnames(countdata) <- gsub("\\.[sb]am$", "", colnames(countdata))
 countdata <- as.matrix(countdata)
 head(countdata)
 
-# 1.4 Assign condition (first three are fas2, second three are fc2)
-(condition <- factor(c(rep("fas2", 3), rep("fc2", 3))))
+# 1.4 Assign condition (first three are fc2, second three are fas2;fc2)
+(condition <- factor(c(rep("fc2", 3), rep("fas2;fc2", 3))))
 
 # 2.0 Analysis with DESeq2 
 library(DESeq2)
@@ -123,10 +123,12 @@ dev.off()
 
 sessionInfo()
 
-#Enhanced Volcano Plot
+#Enhanced Volcano Plot (Significant differentially expressed genes labeled)
 
 EnhancedVolcano(res,
-                  +                 lab = rownames(res),
-                  +                 x = 'log2FoldChange',
-                  +                 y = 'pvalue',
-                  +                 xlim = c(-11, 11))
+                 lab = rownames(res),
+                 x = 'log2FoldChange',
+                 y = 'pvalue',
+                 xlim = c(-11, 11))
+png("diffexpr-EnhancedVolcano.png", 1200, 1000, pointsize=20)
+EnhancedVolcano(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(11, 11))
