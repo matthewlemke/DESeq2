@@ -1,3 +1,5 @@
+##Using CyVerse Discovery Environment Apps: RTMA_v2.6.3, then Rstudio-DESeq2 (Using RTMA feature_counts.txt output)
+
 ## RNA-seq analysis with DESeq2
 ## Adapted from Stephen Turner, @genetics_blog
 
@@ -18,7 +20,7 @@ colnames(countdata) <- gsub("\\.[sb]am$", "", colnames(countdata))
 countdata <- as.matrix(countdata)
 head(countdata)
 
-# 1.4 Assign condition (first three are fc2, second three are fas2;fc2)
+# 1.4 Assign condition (Ex:first three are fc2, second three are fas2;fc2)
 (condition <- factor(c(rep("fc2", 3), rep("fas2;fc2", 3))))
 
 # 2.0 Analysis with DESeq2 
@@ -123,8 +125,11 @@ dev.off()
 
 sessionInfo()
 
-#Enhanced Volcano Plot (Significant differentially expressed genes labeled) (devtools::install_github('kevinblighe/EnhancedVolcano')
+# 7.0 Enhanced Volcano Plot 
 
+##Enhanced Volcano Plot (Significant differentially expressed genes labeled) (devtools::install_github('kevinblighe/EnhancedVolcano')
+## (Kevin Blighe, Sharmila Rana, Myles Lewis)
+## Blighe, K, S Rana, and M Lewis. 2018. “EnhancedVolcano: Publication-ready volcano plots with enhanced colouring and labeling.” https://github.com/kevinblighe.
 
 if (!requireNamespace('BiocManager', quietly = TRUE))
 install.packages('BiocManager')
@@ -134,9 +139,14 @@ devtools::install_github('kevinblighe/EnhancedVolcano')
 
 library(EnhancedVolcano)
 
+##Change xlim as needed (View diffexpr-results.csv to identify max/min diefferentially expressed genes)
+
 EnhancedVolcano(res,
                 lab = rownames(res),
                 x = 'log2FoldChange',
                 y = 'pvalue',
                 xlim = c(-11, 11))
                 
+# 8.0 Save your R session info for reproducibility 
+
+sessionInfo()
