@@ -9,6 +9,14 @@
 # https://www.ncbi.nlm.nih.gov//bioproject/PRJNA315516.
 # 3 samples are a single mutant ("fc2"), 3 samples are a double mutant ("fas2;fc2")
 
+#Install Deseq2
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("DESeq2")
+
+
 # 1.0 Import & pre-process ----------------------------------------------------
 
 # 1.1 Import data from featureCounts
