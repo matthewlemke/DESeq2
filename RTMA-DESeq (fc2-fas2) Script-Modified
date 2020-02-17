@@ -16,6 +16,11 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 
 BiocManager::install("DESeq2")
 
+#Install TidyVerse
+
+install.packages("tidyverse")
+
+library(tidyverse)
 
 # 1.0 Import & pre-process ----------------------------------------------------
 
