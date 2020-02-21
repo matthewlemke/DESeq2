@@ -161,7 +161,26 @@ EnhancedVolcano(res,
                 x = 'log2FoldChange',
                 y = 'pvalue',
                 xlim = c(-11, 11))
-                
+
+#8 Plot heatmap of differentially expressed genes
+# padj < 0.1 and Fold Change > 2
+mostSig <- res[res$padj < 0.1 & abs(res$log2FoldChange) >= 1,]
+mostSig <- rownames(mostSig)
+norm_counts <- counts(dds, normalize=T)
+sig_counts <- norm_counts[mostSig,]
+
+tiff("heatmap_diff_expressed.tiff", width=500, height = 1200)
+heatmap.2(sig_counts, trace='none', col=greenred(56), 
+          scale="row", mar=c(10, 10), key=T, keysize=1, cexRow = 0.3,
+          cexCol = 2, main = "padj < 0.05 & Fold Change >= 1")
+dev.off()
+
+tiff("heatmap_diff_expressed_different_style.tiff", width=500, height = 1200)
+pheatmap(sig_counts, scale = "row", fontsize_row=1, fontsize_col = 10,
+         annotation_col=annotation_col, cluster_cols=F)
+dev.off()
+
+
 # 8.0 Save your R session info for reproducibility 
 
 sessionInfo()
