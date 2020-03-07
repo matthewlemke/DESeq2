@@ -1,4 +1,4 @@
-## CyVerse DESeq2 https://de.cyverse.org/de/
+## DESeq2 Analysis using CyVerse Discovery Environment https://de.cyverse.org/de/
 #Using CyVerse Discovery Environment Apps: RTMA_v2.6.3, then Rstudio-DESeq2 (Using RTMA feature_counts.txt output)
 #(https://rnaseq-webinar-2019.readthedocs.io/en/latest/)
 
