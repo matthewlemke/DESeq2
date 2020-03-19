@@ -5,8 +5,6 @@
 ## RNA-seq analysis with DESeq2
 ## Adapted from Stephen Turner, @genetics_blog
 
-# RNA-seq data from PRJNA315516
-# https://www.ncbi.nlm.nih.gov//bioproject/PRJNA315516.
 # 3 samples are a single mutant ("fc2"), 3 samples are a double mutant ("fas2;fc2")
 
 #Install Deseq2
