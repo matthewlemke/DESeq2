@@ -161,8 +161,8 @@ EnhancedVolcano(res,
                 xlim = c(-11, 11))
 
 #8 Plot heatmap of differentially expressed genes
-# padj < 0.1 and Fold Change > 2
-mostSig <- res[res$padj < 0.1 & abs(res$log2FoldChange) >= 1,]
+# padj < 0.01 and Fold Change > 2
+mostSig <- res[res$padj < 0.01 & abs(res$log2FoldChange) >= 1,]
 mostSig <- rownames(mostSig)
 norm_counts <- counts(dds, normalize=T)
 sig_counts <- norm_counts[mostSig,]
