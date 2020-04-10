@@ -5,8 +5,8 @@
 
 ## RNA-seq analysis with DESeq2
 ## Adapted from Stephen Turner, @genetics_blog
+https://gist.github.com/stephenturner
 
-#Enhanced Volcano Plot (Significant differentially expressed genes labeled) (devtools::install_github('kevinblighe/EnhancedVolcano')
-
+## Enhanced Volcano Plot (Significant differentially expressed genes labeled) (devtools::install_github('kevinblighe/EnhancedVolcano')
 ## (Kevin Blighe, Sharmila Rana, Myles Lewis)
 ## Blighe, K, S Rana, and M Lewis. 2018. “EnhancedVolcano: Publication-ready volcano plots with enhanced colouring and labeling.” https://github.com/kevinblighe.
