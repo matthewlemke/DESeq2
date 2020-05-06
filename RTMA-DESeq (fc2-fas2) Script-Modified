@@ -5,7 +5,7 @@
 ## RNA-seq analysis with DESeq2
 ## Adapted from Stephen Turner, @genetics_blog
 
-# 3 samples are a single mutant ("fc2"), 3 samples are a double mutant ("fas2;fc2")
+# 3 samples are a first set ("base"), 3 samples are second set ("test")
 
 #Install Deseq2
 
@@ -34,7 +34,7 @@ countdata <- as.matrix(countdata)
 head(countdata)
 
 # 1.4 Assign condition (Ex:first three are fc2, second three are fas2;fc2)
-(condition <- factor(c(rep("fc2", 3), rep("fas2;fc2", 3))))
+(condition <- factor(c(rep("base", 3), rep("test", 3))))
 
 # 2.0 Analysis with DESeq2 
 library(DESeq2)
@@ -44,7 +44,11 @@ library(DESeq2)
 dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~condition)
 dds
 
-# 2.2 Run the DESeq pipeline
+# 2.2 Relevel if needed: Example: c("test","base"))
+dds$condition <- factor(dds$condition, levels = c("base","test"))
+
+
+# 2.3 Run the DESeq pipeline
 dds <- DESeq(dds)
 
 # 3.0 Quality Control section
