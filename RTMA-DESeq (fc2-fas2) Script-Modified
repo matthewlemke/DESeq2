@@ -44,7 +44,7 @@ library(DESeq2)
 dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~condition)
 dds
 
-# 2.2 Relevel if needed: Example: c("test","base"))
+# 2.2 Relevel if needed: Example: change c("base","test") to c("test","base")
 dds$condition <- factor(dds$condition, levels = c("base","test"))
 
 
